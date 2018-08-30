@@ -41,12 +41,19 @@ class App extends Component {
         map: map,
         title: place.venue.name
       });
-      console.log(marker)
+      console.log(marker);
+
+      marker.addListener('click', ()=>{
+        let content = place.venue.name + ', ' + place.venue.location.address
+        infoWindow.setContent(content);
+        console.log(marker)
+        infoWindow.open(map, marker)
+      });
       return marker;
     });
 
     const infoWindow = new window.google.maps.InfoWindow();
-    
+
   }
 
   retrieveVenues = () => {
