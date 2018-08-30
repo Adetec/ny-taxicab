@@ -61,8 +61,8 @@ class App extends Component {
       });
       this.state.places.map(item => {
        return console.log(item.venue.location)
-      });
-    }, this.loadMapScript()).catch(e => {
+      }, this.loadMapScript());
+    }).catch(e => {
       console.log(e)
     })
     console.log(parameters);
