@@ -8,7 +8,7 @@ class Menu extends Component {
             <h2 className="list-title">List of Taxicab services</h2>
             <div className="search-box">
                 <input id="filter-input" autoFocus type="text" placeholder="Type to filter the list"></input>
-                <button id="filter-button">Filter</button>
+                <div id="filter-button">Filter</div>
             </div>
             <ul>
                 <li>1</li>
