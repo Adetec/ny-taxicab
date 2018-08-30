@@ -5,6 +5,10 @@ import Navbar from './Navbar';
 import Map from './Map';
 
 class App extends Component {
+
+  state = {
+    places : []
+  }
   render() {
     return (
       <div className="App">
