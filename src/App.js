@@ -44,6 +44,9 @@ class App extends Component {
       console.log(marker)
       return marker;
     });
+
+    const infoWindow = new window.google.maps.InfoWindow();
+    
   }
 
   retrieveVenues = () => {
