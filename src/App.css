@@ -47,7 +47,7 @@
 
 .search-box {
   display: flex;
-  margin-left: 5px;
+  margin: 5px;
 }
 
 #filter-button {
