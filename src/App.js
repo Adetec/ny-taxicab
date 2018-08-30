@@ -11,7 +11,6 @@ class App extends Component {
     places : []
   }
   componentDidMount() {
-    this.loadMapScript();
     this.retrieveVenues();
   }
 
@@ -35,8 +34,16 @@ class App extends Component {
       center: {lat: 40.712775, lng: -74.005973},
       zoom: 12
     });
-    console.log(map)
-    return map;
+
+    this.state.places.map(place => {
+      let marker = new window.google.maps.Marker({
+        position: {lat : place.venue.location.lat, lng : place.venue.location.lng},
+        map: map,
+        title: place.venue.name
+      });
+      console.log(marker)
+      return marker;
+    });
   }
 
   retrieveVenues = () => {
@@ -55,7 +62,7 @@ class App extends Component {
       this.state.places.map(item => {
        return console.log(item.venue.location)
       });
-    }).catch(e => {
+    }, this.loadMapScript()).catch(e => {
       console.log(e)
     })
     console.log(parameters);
