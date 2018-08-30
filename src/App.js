@@ -32,7 +32,7 @@ class App extends Component {
   
   initMap = () => {
     let map = new window.google.maps.Map(document.getElementById('map'), {
-      center: {lat: 37.386052, lng: -122.083851},
+      center: {lat: 40.712775, lng: -74.005973},
       zoom: 12
     });
     console.log(map)
