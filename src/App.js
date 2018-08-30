@@ -4,7 +4,6 @@ import axios from 'axios';
 import './App.css';
 import Menu from './Menu';
 import Navbar from './Navbar';
-import Map from './Map';
 
 class App extends Component {
 
@@ -12,7 +11,31 @@ class App extends Component {
     places : []
   }
   componentDidMount() {
+    this.loadMapScript();
     this.retrieveVenues();
+  }
+
+  mapScript = (src) => {
+    let getFirstScript = window.document.getElementsByTagName('script')[0];
+    let creatMapScript = window.document.createElement('script');
+    creatMapScript.sync = true;
+    creatMapScript.defer = true;
+    creatMapScript.src = src;
+
+    getFirstScript.parentNode.insertBefore(creatMapScript, getFirstScript);
+  }
+
+  loadMapScript = () =>{
+    this.mapScript('https://maps.googleapis.com/maps/api/js?key=AIzaSyBBYin2BxOn4OINcuPIgkLQynZH6EM_pc8&v=3&callback=initMap')
+    window.initMap = this.initMap;
+  }
+  
+  initMap = () => {
+    let map = new window.google.maps.Map(document.getElementById('map'), {
+      center: {lat: 37.386052, lng: -122.083851},
+      zoom: 12
+    });
+    return map;
   }
 
   retrieveVenues = () => {
@@ -44,7 +67,7 @@ class App extends Component {
         <Navbar />
         <main className="grid">
           <Menu />
-          <Map />
+          <div id="map"></div>
         </main>
       </div>
     );
