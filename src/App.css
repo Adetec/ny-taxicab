@@ -62,3 +62,25 @@
 ul {
   list-style-type: none;
 }
+
+
+/* Style Navbar component */
+
+#nav-bar {
+  display: flex;
+  background-color: #222;
+}
+
+#app-title {
+  font-size: 1em;
+  color: rgba(235, 188, 70, 0.9);
+  width: 100%;
+}
+
+#logo {
+  width: 64px;
+  height: 64px;
+  position: absolute;
+  top: 2px;
+  right: 2px;
+}
