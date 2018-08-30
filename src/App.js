@@ -35,6 +35,7 @@ class App extends Component {
       center: {lat: 37.386052, lng: -122.083851},
       zoom: 12
     });
+    console.log(map)
     return map;
   }
 
