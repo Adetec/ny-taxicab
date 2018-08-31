@@ -9,7 +9,8 @@ class App extends Component {
 
   state = {
     places : [],
-    allPlaces : []
+    allPlaces : [],
+    markers : []
   }
   componentDidMount() {
     this.retrieveVenues();
@@ -35,11 +36,12 @@ class App extends Component {
       center: {lat: 40.712775, lng: -74.005973},
       zoom: 12
     });
-
+    let markers = [];
     this.state.allPlaces.map(place => {
       let marker = new window.google.maps.Marker({
         position: {lat : place.venue.location.lat, lng : place.venue.location.lng},
         map: map,
+        id : place.venue.id,
         title: place.venue.name
       });
       console.log(marker);
@@ -47,14 +49,14 @@ class App extends Component {
       marker.addListener('click', ()=>{
         let content = place.venue.name + ', ' + place.venue.location.address
         infoWindow.setContent(content);
-        console.log(marker)
         infoWindow.open(map, marker)
       });
+      markers.push(marker);
+      console.log('marker', marker)
       return marker;
     });
-
     const infoWindow = new window.google.maps.InfoWindow();
-
+    this.setState({markers : markers})
   }
 
   retrieveVenues = () => {
