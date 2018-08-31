@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import escapeRegExp from 'escape-string-regexp';
 
 class Menu extends Component {
     
