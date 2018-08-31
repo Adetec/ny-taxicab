@@ -84,7 +84,7 @@ class App extends Component {
       <div className="App">
         <Navbar />
         <main className="grid">
-          <Menu />
+          <Menu places={this.state.places}/>
           <div id="map"></div>
         </main>
       </div>

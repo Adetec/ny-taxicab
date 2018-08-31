@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 
-
 class Menu extends Component {
+    
+
     render() {
+        
       return (
         <aside className="menu">
             <h2 className="list-title">List of Taxicab services</h2>
@@ -10,18 +12,15 @@ class Menu extends Component {
                 <input id="filter-input" autoFocus type="text" placeholder="Type to filter the list"></input>
                 <div id="filter-button">Filter</div>
             </div>
-            <ul>
-                <li>1</li>
-                <li>2</li>
-                <li>3</li>
-                <li>4</li>
-                <li>5</li>
-                <li>6</li>
-                <li>7</li>
-                <li>8</li>
-                <li>9</li>
-                <li>10</li>
-                <li>11</li>
+            <ul places={this.props.places}> 
+               {
+                   this.props.places.map(place=> (
+
+                       <li>{place.venue.name}</li>
+                                           
+                   ))
+
+               } 
             </ul>
         </aside>
       );
