@@ -2,33 +2,33 @@ import React, { Component } from 'react';
 import escapeRegExp from 'escape-string-regexp';
 
 class Menu extends Component {
-
+    
     state = {
+        places : this.props.places,
         query : '',
         filtredPlaces : [],
-        allPlaces : [],
-        places : this.props.places
+        allPlaces : []
     }
     
-
+    
     updateQuery = (query) => {
         this.setState({ query })
         
         let allPlaces = this.props.places
         let filtredPlaces
-
-        if(this.state.query && (this.state.query !== '')) {
-            const matches = new RegExp(escapeRegExp(query), 'i');
+        const matches = new RegExp(escapeRegExp(query), 'i');
+        
+        if(this.state.query && (this.state.query === '')) {
+            this.setState({places: allPlaces});
+            this.props.filterPlaces(filtredPlaces);
+        } else {
             filtredPlaces = allPlaces.filter((place) => matches.test(place.venue.name));
             this.setState({places: filtredPlaces});
             this.props.filterPlaces(filtredPlaces);
-        } else {
-            this.setState({places: allPlaces});
         }
     }
-
+    
     render() {
-
         
         
         return (
@@ -38,10 +38,15 @@ class Menu extends Component {
                     <input id="filter-input" autoFocus type="text" onChange={(event) => this.updateQuery(event.target.value)} placeholder="Type to filter the list"></input>
                     <div id="filter-button">Filter</div>
                 </div>
-                <ul filterPlaces={this.filterPlaces}> 
+                {
+                    this.props.places.length > 0 && (
+
+                    
+                
+                <ul> 
                 
                 {
-                    this.state.places.map(place=> (
+                    this.props.places.map(place=> (
 
                         <li key={place.venue.id}>{place.venue.name}</li>
                                             
@@ -49,6 +54,15 @@ class Menu extends Component {
 
                 } 
                 </ul>
+                    )}
+                {
+                  
+                    this.props.places.length === 0 && (
+
+                    
+                
+                <div>Sorry!!</div>
+                    )}
             </aside>
         );
     }

@@ -83,7 +83,7 @@ class App extends Component {
   }
 
   filterPlaces = (filtredPlaces) => {
-    this.setState({filtredPlaces : filtredPlaces})
+    this.setState({places : filtredPlaces})
   }
 
   render() {
@@ -91,7 +91,7 @@ class App extends Component {
       <div className="App">
         <Navbar />
         <main className="grid">
-          <Menu places={this.state.allPlaces} filterPlaces={this.filterPlaces}/>
+          <Menu places={this.state.places} filterPlaces={this.filterPlaces}/>
           <div id="map"></div>
         </main>
       </div>
