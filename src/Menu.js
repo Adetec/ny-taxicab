@@ -6,7 +6,8 @@ class Menu extends Component {
     state = {
         query : '',
         filtredPlaces : [],
-        allPlaces : []
+        allPlaces : [],
+        places : this.props.places
     }
     
 
@@ -37,12 +38,12 @@ class Menu extends Component {
                     <input id="filter-input" autoFocus type="text" onChange={(event) => this.updateQuery(event.target.value)} placeholder="Type to filter the list"></input>
                     <div id="filter-button">Filter</div>
                 </div>
-                <ul places={this.props.places}> 
+                <ul filterPlaces={this.filterPlaces}> 
                 
                 {
-                    this.props.places.map(place=> (
+                    this.state.places.map(place=> (
 
-                        <li>{place.venue.name}</li>
+                        <li key={place.venue.id}>{place.venue.name}</li>
                                             
                     ))
 

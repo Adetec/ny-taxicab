@@ -9,7 +9,8 @@ class App extends Component {
 
   state = {
     places : [],
-    filtredPlaces : []
+    filtredPlaces : [],
+    allPlaces : []
   }
   componentDidMount() {
     this.retrieveVenues();
@@ -36,14 +37,14 @@ class App extends Component {
       zoom: 12
     });
 
-    this.state.places.map(place => {
+    this.state.allPlaces.map(place => {
       let marker = new window.google.maps.Marker({
         position: {lat : place.venue.location.lat, lng : place.venue.location.lng},
         map: map,
         title: place.venue.name
       });
       console.log(marker);
-
+      
       marker.addListener('click', ()=>{
         let content = place.venue.name + ', ' + place.venue.location.address
         infoWindow.setContent(content);
@@ -67,8 +68,9 @@ class App extends Component {
       near : 'New York'
     }
     axios.get(endPoint + new URLSearchParams(parameters)).then(response => {
+      let result = response.data.response.groups[0].items;
       this.setState({
-        places : response.data.response.groups[0].items
+        places : result, allPlaces : result
       });
       this.state.places.map(item => {
        return console.log(item.venue.location)
@@ -89,7 +91,7 @@ class App extends Component {
       <div className="App">
         <Navbar />
         <main className="grid">
-          <Menu places={this.state.places} filterPlaces={this.filterPlaces}/>
+          <Menu places={this.state.allPlaces} filterPlaces={this.filterPlaces}/>
           <div id="map"></div>
         </main>
       </div>
