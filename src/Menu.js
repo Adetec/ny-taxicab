@@ -5,8 +5,10 @@ class Menu extends Component {
 
     state = {
         query : '',
-        filtredPlaces : []
+        filtredPlaces : [],
+        allPlaces : []
     }
+    
     
 
     render() {
@@ -19,6 +21,7 @@ class Menu extends Component {
                 <div id="filter-button">Filter</div>
             </div>
             <ul places={this.props.places}> 
+               
                {
                    this.props.places.map(place=> (
 
