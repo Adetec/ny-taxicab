@@ -4,11 +4,10 @@ import escapeRegExp from 'escape-string-regexp';
 class Menu extends Component {
     
     state = {
-        places : this.props.places,
         query : '',
-        filtredPlaces : [],
-        allPlaces : []
+        filtredPlaces : []
     }
+    
     
     
     updateQuery = (query) => {
@@ -19,17 +18,16 @@ class Menu extends Component {
         const matches = new RegExp(escapeRegExp(query), 'i');
         
         if(this.state.query && (this.state.query === '')) {
-            this.setState({places: allPlaces});
+            this.setState({filtredPlaces});
             this.props.filterPlaces(filtredPlaces);
         } else {
             filtredPlaces = allPlaces.filter((place) => matches.test(place.venue.name));
-            this.setState({places: filtredPlaces});
+            this.setState({filtredPlaces});
             this.props.filterPlaces(filtredPlaces);
         }
     }
     
     render() {
-        
         
         return (
             <aside className="menu">
@@ -39,30 +37,24 @@ class Menu extends Component {
                     <div id="filter-button">Filter</div>
                 </div>
                 {
-                    this.props.places.length > 0 && (
+                    this.state.filtredPlaces.length > 0 && (                
+                        <ul>
+                            {
+                                this.state.filtredPlaces.map(place=> (
 
-                    
-                
-                <ul> 
-                
-                {
-                    this.props.places.map(place=> (
+                                    <li key={place.venue.id}>{place.venue.name}</li>
+                                                        
+                                ))
+                            } 
+                        </ul>
+                    )
+                }
 
-                        <li key={place.venue.id}>{place.venue.name}</li>
-                                            
-                    ))
-
-                } 
-                </ul>
-                    )}
-                {
-                  
-                    this.props.places.length === 0 && (
-
-                    
-                
-                <div>Sorry!!</div>
-                    )}
+                {  
+                    this.state.filtredPlaces.length === 0 && (
+                        <div>Sorry!!</div>
+                    )
+                }
             </aside>
         );
     }

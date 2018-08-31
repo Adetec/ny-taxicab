@@ -9,7 +9,6 @@ class App extends Component {
 
   state = {
     places : [],
-    filtredPlaces : [],
     allPlaces : []
   }
   componentDidMount() {
@@ -82,8 +81,8 @@ class App extends Component {
     
   }
 
-  filterPlaces = (filtredPlaces) => {
-    this.setState({places : filtredPlaces})
+  filterPlaces = (places) => {
+    this.setState({places})
   }
 
   render() {
@@ -91,7 +90,7 @@ class App extends Component {
       <div className="App">
         <Navbar />
         <main className="grid">
-          <Menu places={this.state.places} filterPlaces={this.filterPlaces}/>
+          <Menu places={this.state.allPlaces} filterPlaces={this.filterPlaces}/>
           <div id="map"></div>
         </main>
       </div>
