@@ -5,25 +5,33 @@ class Menu extends Component {
     
     state = {
         query : '',
-        filtredPlaces : []
+        filtredPlaces : [],
+        markers : []
     }
     
-    
+    hideAllMarkers = () => {
+        this.props.markers.forEach(marker => {
+            marker.setVisible(false);
+        });
+    }
     
     updateQuery = (query) => {
         this.setState({ query })
         
-        let allPlaces = this.props.places
-        let filtredPlaces
         const matches = new RegExp(escapeRegExp(query), 'i');
+        let allPlaces = this.props.places;
+        let filtredPlaces;
         
         if(this.state.query && (this.state.query === '')) {
             this.setState({filtredPlaces});
             this.props.filterPlaces(filtredPlaces);
+            
         } else {
             filtredPlaces = allPlaces.filter((place) => matches.test(place.venue.name));
             this.setState({filtredPlaces});
             this.props.filterPlaces(filtredPlaces);
+            this.hideAllMarkers()
+            
         }
     }
     
