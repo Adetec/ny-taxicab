@@ -8,7 +8,8 @@ import Navbar from './Navbar';
 class App extends Component {
 
   state = {
-    places : []
+    places : [],
+    filtredPlaces : []
   }
   componentDidMount() {
     this.retrieveVenues();
@@ -79,12 +80,16 @@ class App extends Component {
     
   }
 
+  filterPlaces = (filtredPlaces) => {
+    this.setState({filtredPlaces : filtredPlaces})
+  }
+
   render() {
     return (
       <div className="App">
         <Navbar />
         <main className="grid">
-          <Menu places={this.state.places}/>
+          <Menu places={this.state.places} filterPlaces={this.filterPlaces}/>
           <div id="map"></div>
         </main>
       </div>

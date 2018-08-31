@@ -18,10 +18,11 @@ class Menu extends Component {
 
         if(this.state.query && (this.state.query !== '')) {
             const matches = new RegExp(escapeRegExp(query), 'i');
-            filtredPlaces = allPlaces.filter((place) => matches.test(place.venue.name))
-            this.setState({places: filtredPlaces})
+            filtredPlaces = allPlaces.filter((place) => matches.test(place.venue.name));
+            this.setState({places: filtredPlaces});
+            this.props.filterPlaces(filtredPlaces);
         } else {
-            this.setState({places: allPlaces})
+            this.setState({places: allPlaces});
         }
     }
 
