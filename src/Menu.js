@@ -6,7 +6,9 @@ class Menu extends Component {
     state = {
         query : '',
         filtredPlaces : [],
-        markers : []
+        markers : [],
+        onLoad : true,
+        notFound : 'Sorry, not found !'
     }
     
     hideAllMarkers = () => {
@@ -16,7 +18,7 @@ class Menu extends Component {
     }
     
     updateQuery = (query) => {
-        this.setState({ query })
+        this.setState({ query, onLoad : false })
         
         const matches = new RegExp(escapeRegExp(query), 'i');
         let allPlaces = this.props.places;
@@ -25,6 +27,7 @@ class Menu extends Component {
         if(this.state.query && (this.state.query === '')) {
             this.setState({filtredPlaces});
             this.props.filterPlaces(filtredPlaces);
+            this.setState({onLoad : true})
             
         } else {
             filtredPlaces = allPlaces.filter((place) => matches.test(place.venue.name));
@@ -44,6 +47,21 @@ class Menu extends Component {
                     <input id="filter-input" autoFocus type="text" onChange={(event) => this.updateQuery(event.target.value)} placeholder="Type to filter the list"></input>
                     <div id="filter-button">Filter</div>
                 </div>
+                
+                {
+                    this.state.onLoad === true && (                
+                        <ul>
+                            {
+                                this.props.places.map(place=> (
+
+                                    <li key={place.venue.id}>{place.venue.name}</li>
+                                                        
+                                ))
+                            } 
+                        </ul>
+                    )
+                }
+
                 {
                     this.state.filtredPlaces.length > 0 && (                
                         <ul>
@@ -60,7 +78,7 @@ class Menu extends Component {
 
                 {  
                     this.state.filtredPlaces.length === 0 && (
-                        <div>Sorry!!</div>
+                        <div>{this.notFound}</div>
                     )
                 }
             </aside>
