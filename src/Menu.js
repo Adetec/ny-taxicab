@@ -19,7 +19,7 @@ class Menu extends Component {
     
     updateQuery = (query) => {
         this.setState({ query, onLoad : false })
-        
+        this.hideAllMarkers();
         const matches = new RegExp(escapeRegExp(query), 'i');
         let allPlaces = this.props.places;
         let filtredPlaces;
@@ -33,7 +33,13 @@ class Menu extends Component {
             filtredPlaces = allPlaces.filter((place) => matches.test(place.venue.name));
             this.setState({filtredPlaces});
             this.props.filterPlaces(filtredPlaces);
-            this.hideAllMarkers()
+            this.props.markers.filter(marker => {
+                    filtredPlaces.map((place) => {
+                        marker.id === place.venue.id && marker.setVisible(true);
+                        console.log(place.venue.name, marker.visible)
+                    })
+                })
+            
             
         }
     }

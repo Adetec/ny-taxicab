@@ -37,7 +37,7 @@ class App extends Component {
       zoom: 12
     });
     let markers = [];
-    this.state.allPlaces.map(place => {
+    this.state.places.map(place => {
       let marker = new window.google.maps.Marker({
         position: {lat : place.venue.location.lat, lng : place.venue.location.lng},
         map: map,
