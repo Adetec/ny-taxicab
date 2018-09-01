@@ -60,7 +60,11 @@
 #filter-input {
   width: 70%;
   height: 18px;
+  border: #222 solid 2px;
+  border-radius: 5px 0 0 5px;
+  outline: none;
 }
+
 
 ul {
   list-style-type: none;
