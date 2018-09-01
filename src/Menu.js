@@ -21,8 +21,8 @@ class Menu extends Component {
         this.props.markers.map((marker) => {
             if(marker.id === id) {
                 window.google.maps.event.trigger(marker, 'click');
-                console.log(id)
             }
+            return marker
         });
     }
     
