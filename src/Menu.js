@@ -16,6 +16,15 @@ class Menu extends Component {
             marker.setVisible(false);
         });
     }
+
+    infoWin = (id) => {
+        this.props.markers.map((marker) => {
+            if(marker.id === id) {
+                window.google.maps.event.trigger(marker, 'click');
+                console.log(id)
+            }
+        });
+    }
     
     updateQuery = (query) => {
         this.setState({ query, onLoad : false })
@@ -38,6 +47,7 @@ class Menu extends Component {
                         return marker.id === place.venue.id && marker.setVisible(true);
                         
                     });
+                    return marker;
                 });
             
         }
@@ -59,7 +69,7 @@ class Menu extends Component {
                             {
                                 this.props.places.map(place=> (
 
-                                    <li key={place.venue.id}>{place.venue.name}</li>
+                                    <li onClick={()=>this.infoWin(place.venue.id)} key={place.venue.id}>{place.venue.name}</li>
                                                         
                                 ))
                             } 
@@ -74,7 +84,7 @@ class Menu extends Component {
                                 {
                                     this.state.filtredPlaces.map(place=> (
                                         
-                                        <li key={place.venue.id}>{place.venue.name}</li>
+                                        <li onClick={()=>this.infoWin(place.venue.id)} key={place.venue.id}>{place.venue.name}</li>
                                         
                                     ))
                                 } 
