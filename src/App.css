@@ -115,3 +115,9 @@ li:hover {
   height: 100vh;
   width: 100%;
 }
+
+/* Styles for info window */
+
+.info-content {
+  text-align : left;
+}
