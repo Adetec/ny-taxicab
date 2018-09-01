@@ -54,7 +54,14 @@ class App extends Component {
               marker.setAnimation(null);
           }, 3000);
           
-          let content = place.venue.name + ', ' + place.venue.location.address
+          let content = `
+          <div id='info-view'>
+            <h3>${place.venue.name}</h3>
+            <p class='info-content'><strong>Latitude: </strong>${place.venue.location.lat}</p>
+            <p class='info-content'><strong>Longitude: </strong>${place.venue.location.lng}</p>
+          </div>
+          
+          `
           infoWindow.setContent(content);
           infoWindow.open(map, marker)
           
