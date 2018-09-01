@@ -36,9 +36,8 @@
 
 .menu {
   width: 200px;
-  height: 100vh;
   background-color: rgba(235, 188, 70, 0.9);
-  padding: 5px 0;
+  margin: 36px 0 0;
 }
 
 .list-title {
@@ -92,6 +91,9 @@ li:hover {
 #nav-bar {
   display: flex;
   background-color: #222;
+  position : absolute;
+  width : 100%;
+  z-index : 1;
 }
 
 #app-title {
