@@ -34,7 +34,7 @@ class App extends Component {
   initMap = () => {
     let map = new window.google.maps.Map(document.getElementById('map'), {
       center: {lat: 40.712775, lng: -74.005973},
-      zoom: 12
+      zoom: 10
     });
     let markers = [];
     this.state.places.map(place => {
