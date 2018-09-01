@@ -83,7 +83,7 @@ class App extends Component {
         return item;
       }, this.loadMapScript());
     }).catch(e => {
-      console.log(e)
+      alert('Sorry! Data can\'t be loaded');
     });
     
   }
