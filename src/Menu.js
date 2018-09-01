@@ -35,11 +35,10 @@ class Menu extends Component {
             this.props.filterPlaces(filtredPlaces);
             this.props.markers.filter(marker => {
                     filtredPlaces.map((place) => {
-                        marker.id === place.venue.id && marker.setVisible(true);
-                        console.log(place.venue.name, marker.visible)
-                    })
-                })
-            
+                        return marker.id === place.venue.id && marker.setVisible(true);
+                        
+                    });
+                });
             
         }
     }
@@ -70,23 +69,36 @@ class Menu extends Component {
 
                 {
                     this.state.filtredPlaces.length > 0 && (                
-                        <ul>
+                        <div>
+                            <ul>
+                                {
+                                    this.state.filtredPlaces.map(place=> (
+                                        
+                                        <li key={place.venue.id}>{place.venue.name}</li>
+                                        
+                                    ))
+                                } 
+                            </ul>
                             {
-                                this.state.filtredPlaces.map(place=> (
-
-                                    <li key={place.venue.id}>{place.venue.name}</li>
-                                                        
-                                ))
-                            } 
-                        </ul>
+                                this.state.filtredPlaces.length > 1 && (
+                                    <div>{this.state.filtredPlaces.length} places of {this.props.places.length}</div>
+                                )
+                            }
+                            {
+                                this.state.filtredPlaces.length === 1 && (
+                                    <div>{this.state.filtredPlaces.length} place of {this.props.places.length}</div>
+                                )
+                            }
+                            
+                        </div>
                     )
                 }
-
                 {  
-                    this.state.filtredPlaces.length === 0 && (
+                    this.state.filtredPlaces === 0 && (
                         <div>{this.notFound}</div>
                     )
                 }
+
             </aside>
         );
     }

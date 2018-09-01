@@ -44,7 +44,6 @@ class App extends Component {
         id : place.venue.id,
         title: place.venue.name
       });
-      console.log(marker);
       
       marker.addListener('click', ()=>{
         let content = place.venue.name + ', ' + place.venue.location.address
@@ -52,7 +51,6 @@ class App extends Component {
         infoWindow.open(map, marker)
       });
       markers.push(marker);
-      console.log('marker', marker)
       return marker;
     });
     const infoWindow = new window.google.maps.InfoWindow();
@@ -74,12 +72,11 @@ class App extends Component {
         places : result, allPlaces : result
       });
       this.state.places.map(item => {
-       return console.log(item.venue.location)
+        return item;
       }, this.loadMapScript());
     }).catch(e => {
       console.log(e)
-    })
-    console.log(parameters);
+    });
     
   }
 
