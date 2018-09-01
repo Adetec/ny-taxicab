@@ -44,13 +44,24 @@ class App extends Component {
         id : place.venue.id,
         title: place.venue.name
       });
+        markers.push(marker);
       
-      marker.addListener('click', ()=>{
-        let content = place.venue.name + ', ' + place.venue.location.address
-        infoWindow.setContent(content);
-        infoWindow.open(map, marker)
-      });
-      markers.push(marker);
+        marker.addListener('click', ()=>{
+          marker.setAnimation(window.google.maps.Animation.BOUNCE);
+          setTimeout(() => {
+            if (marker.getAnimation() !== null) {
+              marker.setAnimation(null);
+            } else {
+              
+            }  
+          }, 3000);
+          
+          let content = place.venue.name + ', ' + place.venue.location.address
+          infoWindow.setContent(content);
+          infoWindow.open(map, marker)
+  
+          
+        });
       return marker;
     });
     const infoWindow = new window.google.maps.InfoWindow();
