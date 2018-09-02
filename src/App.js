@@ -34,6 +34,9 @@ class App extends Component {
   loadMapScript = () =>{
     this.mapScript('https://maps.googleapis.com/maps/api/js?key=AIzaSyBBYin2BxOn4OINcuPIgkLQynZH6EM_pc8&v=3&callback=initMap')
     window.initMap = this.initMap;
+    window.gm_authFailure = () => {
+      alert('Oops!! Google maps Error loading!');
+    }
   }
   
   initMap = () => {
