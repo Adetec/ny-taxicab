@@ -105,7 +105,7 @@ class App extends Component {
         <Navbar />
         <main className="grid">
           <Menu places={this.state.allPlaces} filterPlaces={this.filterPlaces} markers={this.state.markers}/>
-          <div id="map" role="application" aria-label="Google Map Api" ></div>
+          <div tabIndex="3" id="map" role="application" aria-label="Google Map Api" ></div>
         </main>
       </div>
     );

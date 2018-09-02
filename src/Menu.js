@@ -60,7 +60,7 @@ class Menu extends Component {
     render() {
         
         return (
-            <aside aria-label="Places list menu" className="menu">
+            <aside tabIndex="1" aria-label="Places list menu" className="menu">
                 <h2 id="lst-title" className="list-title">List of Taxicab services</h2>
                 <div className="search-box" role="group" aria-label="Search box">
                     <input id="filter-input"  type="text" role="search" onChange={(event) => this.updateQuery(event.target.value)} placeholder="Type to filter the list"></input>
@@ -69,7 +69,7 @@ class Menu extends Component {
                 
                 {
                     this.state.onLoad === true && (                
-                        <ul id="list" role="group" aria-labelledby="lst-title">
+                        <ul id="list" tabIndex="2" role="group" aria-labelledby="lst-title">
                             {
                                 this.props.places.map(place=> (
 
@@ -84,7 +84,7 @@ class Menu extends Component {
                 {
                     this.state.filtredPlaces.length > 0 && (                
                         <div>
-                            <ul id="list" role="group" aria-labelledby="lst-title">
+                            <ul id="list" tabIndex="2" role="group" aria-labelledby="lst-title">
                                 {
                                     this.state.filtredPlaces.map(place=> (
                                         
