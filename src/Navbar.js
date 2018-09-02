@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import logo from './logo.svg'
-import Menu from './Menu' 
 
 class Navbar extends Component {
   toggleCollapse =() => {
