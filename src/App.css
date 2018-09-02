@@ -51,14 +51,19 @@
 
 #filter-button {
   color: rgba(235, 188, 70, 0.9);
-  background: #222;
+  background-color: #222;
+  width: 20px;
   height: 20px;
   padding: 2px;
   border-radius: 0 5px 5px 0;
 }
 
+#filter-button:hover {
+  color: #ea4335;
+}
+
 #filter-input {
-  width: 70%;
+  width: 100%;
   height: 18px;
   border: #222 solid 2px;
   border-radius: 5px 0 0 5px;

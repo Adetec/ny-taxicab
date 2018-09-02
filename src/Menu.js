@@ -60,7 +60,7 @@ class Menu extends Component {
                 <h2 className="list-title">List of Taxicab services</h2>
                 <div className="search-box">
                     <input id="filter-input" autoFocus type="text" onChange={(event) => this.updateQuery(event.target.value)} placeholder="Type to filter the list"></input>
-                    <div id="filter-button">Filter</div>
+                    <div id="filter-button">x</div>
                 </div>
                 
                 {
