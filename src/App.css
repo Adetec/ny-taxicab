@@ -13,10 +13,6 @@
   color: white;
 }
 
-.App-title {
-  font-size: 1.5em;
-}
-
 .grid {
   display: flex;
 }
@@ -105,6 +101,7 @@ nav {
   font-size: 1em;
   color: rgba(235, 188, 70, 0.9);
   width: 100%;
+  text-align: right;
 }
 
 #logo {
@@ -161,5 +158,8 @@ span {
 
   #logo {
     left: 100px;
+  }
+  #app-title {
+    text-align: center;
   }
 }

@@ -21,7 +21,7 @@ class Navbar extends Component {
     return (
       <header tabIndex="0" id="header">
         <nav>
-          <h1 id="app-title" aria-label="Application Title">Taxicab services in NEW YORK</h1>
+          <h1 id="app-title" aria-label="Application Title">Taxicab NEW YORK</h1>
           <img onClick={() => this.toggleCollapse()} id="logo" src={logo} alt="Taxicab logo"></img>
         </nav>
       </header>
