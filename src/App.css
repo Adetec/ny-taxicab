@@ -39,6 +39,7 @@
   background-color: rgba(235, 188, 70, 0.9);
   margin: 36px 0 0;
   box-shadow: #222 1px 3px 12px;
+  transition: all 1s ease;
 }
 
 .list-title {
@@ -120,6 +121,7 @@ li:hover {
   top: -5px;
   left: 0;
   z-index: 1;
+  transition: all 1s ease;
 }
 
 /* Styles for map container */
