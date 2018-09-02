@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+// Import escape string RegExp
 import escapeRegExp from 'escape-string-regexp';
 
 class Menu extends Component {
@@ -8,15 +9,14 @@ class Menu extends Component {
         filtredPlaces : [],
         markers : [],
         onLoad : true,
-        notFound : 'Sorry, not found !'
     }
-    
+    // This will hide all markers in the map
     hideAllMarkers = () => {
         this.props.markers.forEach(marker => {
             marker.setVisible(false);
         });
     }
-
+    //this will open infoWindow when click event is trigged
     infoWin = (id) => {
         this.props.markers.map((marker) => {
             if(marker.id === id) {
@@ -25,35 +25,37 @@ class Menu extends Component {
             return marker
         });
     }
+
+    //This will empty the text typed by user in the search input
     emptySearchQuery = () => {
         document.getElementById('filter-input').value = '';
         this.updateQuery('')
     }
     
+    // This will update the list when filter is applied
     updateQuery = (query) => {
-        this.setState({ query, onLoad : false })
-        this.hideAllMarkers();
-        const matches = new RegExp(escapeRegExp(query), 'i');
-        let allPlaces = this.props.places;
+        this.setState({ query, onLoad : false })// Update the query state and remove default locations list
+        this.hideAllMarkers();// Hide all markers
+        const matches = new RegExp(escapeRegExp(query), 'i');// Create regExp variable
+        let allPlaces = this.props.places;// Get places from parent component
         let filtredPlaces;
-        
-        if(this.state.query && (this.state.query === '')) {
-            this.setState({filtredPlaces});
-            this.props.filterPlaces(filtredPlaces);
-            this.setState({onLoad : true})
+        // Check what user types
+        if(this.state.query && (this.state.query === '')) {//Query is empty
+            this.setState({filtredPlaces});//restore all places
+            this.props.filterPlaces(filtredPlaces);//Call parent function to restore places
+            this.setState({onLoad : true});//Display All places in the list
             
         } else {
-            filtredPlaces = allPlaces.filter((place) => matches.test(place.venue.name));
-            this.setState({filtredPlaces});
-            this.props.filterPlaces(filtredPlaces);
-            this.props.markers.filter(marker => {
-                    filtredPlaces.map((place) => {
-                        return marker.id === place.venue.id && marker.setVisible(true);
-                        
-                    });
-                    return marker;
+            filtredPlaces = allPlaces.filter((place) => matches.test(place.venue.name));// Check if query matches location names
+            this.setState({filtredPlaces});// Add just places that matches
+            this.props.filterPlaces(filtredPlaces);// Call parent function to filter props places
+            this.props.markers.filter(marker => {// Loop through each marek to filter with places
+                filtredPlaces.map((place) => {// Loop through each place to check if that match
+                    return marker.id === place.venue.id && marker.setVisible(true);// If true display its own marker
+                    
                 });
-            
+                return marker;
+            });
         }
     }
     
@@ -68,6 +70,7 @@ class Menu extends Component {
                 </div>
                 
                 {
+                    // If query is empty or page is loaded, render all places
                     this.state.onLoad === true && (                
                         <ul id="list" tabIndex="2" role="group" aria-labelledby="lst-title">
                             {
@@ -82,6 +85,7 @@ class Menu extends Component {
                 }
 
                 {
+                    // If query matches at least one place, render filtred list
                     this.state.filtredPlaces.length > 0 && (                
                         <div>
                             <ul id="list" tabIndex="2" role="group" aria-labelledby="lst-title">
@@ -94,11 +98,13 @@ class Menu extends Component {
                                 } 
                             </ul>
                             {
+                                // If there are more then one place, display places in plural
                                 this.state.filtredPlaces.length > 1 && (
                                     <div>{this.state.filtredPlaces.length} places of {this.props.places.length}</div>
                                 )
                             }
                             {
+                                // If there is just one place, display place without plural
                                 this.state.filtredPlaces.length === 1 && (
                                     <div>{this.state.filtredPlaces.length} place of {this.props.places.length}</div>
                                 )
@@ -107,12 +113,6 @@ class Menu extends Component {
                         </div>
                     )
                 }
-                {  
-                    this.state.filtredPlaces === 0 && (
-                        <div>{this.notFound}</div>
-                    )
-                }
-
             </aside>
         );
     }

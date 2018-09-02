@@ -1,11 +1,15 @@
 import React, { Component } from 'react'
+// Import logo image
 import logo from './logo.svg'
 
 class Navbar extends Component {
+  // To show or hide menu
   toggleCollapse =() => {
-    let menu = document.getElementsByClassName('menu')[0];
-    let carPosition = document.getElementById('logo');
+    let menu = document.getElementsByClassName('menu')[0];// Get the menu element
+    let carPosition = document.getElementById('logo');// Get logo
+    // If the menu is displayed
     if(menu.style.width !== 0+'px') {
+      //Set Log animation and hide the menu
       carPosition.style.left = 0;
       menu.style.width = 0+'px'
     } else {
