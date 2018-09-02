@@ -12,8 +12,7 @@ class App extends Component {
   state = {
     places : [],
     allPlaces : [],
-    markers : [],
-    mapError : false
+    markers : []
   }
   //Fetch data and retrieve requests asynchronously
   componentDidMount() {
@@ -33,7 +32,7 @@ class App extends Component {
 
   //This will load google map script and initiate the map
   loadMapScript = () =>{
-    this.mapScript('https://maps.googleapis.com/maps/api/js?key=AIzaSyBBYin2BxOn4OINcuPIgkLQynZH6EM_pc8&v=3&callback=initMap')
+    this.mapScript('https://maps.googleapis.com/maps/api/js?key=AIzaSyBBYin2BxOn4OINcuPIgkLQynZH6EM_pc&v=3&callback=initMap')
     window.gm_authFailure = () => {
       alert('Oops!! Google maps Error loading!');
       this.setState({mapError : true})
@@ -125,20 +124,7 @@ class App extends Component {
         <Navbar />
         <main className="grid">
           <Menu places={this.state.allPlaces} filterPlaces={this.filterPlaces} markers={this.state.markers}/>
-          {
-            this.mapError && (
-              <div tabIndex="3" id="map" role="application" aria-label="Google Map Api" ></div>
-            )
-          }
-            :
-          {
-            (
-              <div id="error-map" role="container">
-                <h1>Oops !</h1>
-                <p>Map can't be loaded</p>
-              </div>
-            )
-          }
+          <div tabIndex="3" id="map" role="application" aria-label="Google Map Api" ></div>
         </main>
           <Footer />
       </div>
