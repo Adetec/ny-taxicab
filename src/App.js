@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import axios from 'axios';
 
 import './App.css';
-import Menu from './Menu';
 import Navbar from './Navbar';
+import Menu from './Menu';
+import Footer from './Footer';
 
 class App extends Component {
 
@@ -107,6 +108,7 @@ class App extends Component {
           <Menu places={this.state.allPlaces} filterPlaces={this.filterPlaces} markers={this.state.markers}/>
           <div tabIndex="3" id="map" role="application" aria-label="Google Map Api" ></div>
         </main>
+          <Footer />
       </div>
     );
   }
