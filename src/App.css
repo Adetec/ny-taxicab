@@ -136,3 +136,18 @@ li:hover {
 .info-content {
   text-align : left;
 }
+
+/* Styles for Responsiveness */
+
+/* TODO: Set media query for tablet an desktop */
+@media screen and (min-width: 451px){
+
+  .menu {
+    width: 200px;
+  }
+
+  #logo {
+    left: 100px;
+  }
+}
+
