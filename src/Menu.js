@@ -60,10 +60,10 @@ class Menu extends Component {
     render() {
         
         return (
-            <aside className="menu">
+            <aside aria-label="Places list menu" className="menu">
                 <h2 id="lst-title" className="list-title">List of Taxicab services</h2>
                 <div className="search-box" role="group" aria-label="Search box">
-                    <input id="filter-input" autoFocus type="text" role="search" onChange={(event) => this.updateQuery(event.target.value)} placeholder="Type to filter the list"></input>
+                    <input id="filter-input"  type="text" role="search" onChange={(event) => this.updateQuery(event.target.value)} placeholder="Type to filter the list"></input>
                     <div onClick={() => this.emptySearchQuery()} id="filter-button" role="button" aria-label="Reset fitltred query">x</div>
                 </div>
                 
