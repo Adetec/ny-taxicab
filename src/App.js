@@ -33,7 +33,7 @@ class App extends Component {
   //This will load google map script and initiate the map
   loadMapScript = () =>{
     // Set Map Source to the script
-    this.mapScript('https://maps.googleapis.com/maps/api/js?key=AIzaSyBBYin2BxOn4OINcuPIgkLQynZH6EM_pc&v=3&callback=initMap')
+    this.mapScript('https://maps.googleapis.com/maps/api/js?key=AIzaSyBBYin2BxOn4OINcuPIgkLQynZH6EM_pc8&v=3&callback=initMap')
     // Now render map
     window.initMap = this.initMap;
     
