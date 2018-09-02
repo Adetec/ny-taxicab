@@ -104,6 +104,7 @@ function checkValidServiceWorker(swUrl) {
     .catch(() => {
       let messageError = 'No internet connection found. App is running in offline mode.';
       document.getElementById('app-title').innerHTML = messageError;
+      // Display alert box if it's offline
       alert('No internet connection found. App is running in offline mode.');
     });
 }
