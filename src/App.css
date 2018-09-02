@@ -35,7 +35,7 @@
 /* Style Menu component */
 
 .menu {
-  width: 200px;
+  width: 0px;
   background-color: rgba(235, 188, 70, 0.9);
   margin: 36px 0 0;
   box-shadow: #222 1px 3px 12px;

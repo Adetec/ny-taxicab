@@ -6,12 +6,12 @@ class Navbar extends Component {
   toggleCollapse =() => {
     let menu = document.getElementsByClassName('menu')[0];
     let carPosition = document.getElementById('logo');
-    if(menu.style.width === 0+'px') {
-      carPosition.style.left = 157+'px';
-      menu.style.width = 200+'px'
-    } else {
+    if(menu.style.width !== 0+'px') {
       carPosition.style.left = 0;
       menu.style.width = 0+'px'
+    } else {
+      carPosition.style.left = 100+'px';
+      menu.style.width = 200+'px'
     }
   }
   render() {
