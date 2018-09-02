@@ -101,11 +101,11 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
+      <div className="App" role="application" aria-label="React components parent">
         <Navbar />
         <main className="grid">
           <Menu places={this.state.allPlaces} filterPlaces={this.filterPlaces} markers={this.state.markers}/>
-          <div id="map"></div>
+          <div id="map" role="application" aria-label="Google Map Api" ></div>
         </main>
       </div>
     );

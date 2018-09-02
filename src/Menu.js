@@ -61,19 +61,19 @@ class Menu extends Component {
         
         return (
             <aside className="menu">
-                <h2 className="list-title">List of Taxicab services</h2>
-                <div className="search-box">
-                    <input id="filter-input" autoFocus type="text" onChange={(event) => this.updateQuery(event.target.value)} placeholder="Type to filter the list"></input>
-                    <div onClick={() => this.emptySearchQuery()} id="filter-button">x</div>
+                <h2 id="lst-title" className="list-title">List of Taxicab services</h2>
+                <div className="search-box" role="group" aria-label="Search box">
+                    <input id="filter-input" autoFocus type="text" role="search" onChange={(event) => this.updateQuery(event.target.value)} placeholder="Type to filter the list"></input>
+                    <div onClick={() => this.emptySearchQuery()} id="filter-button" role="button" aria-label="Reset fitltred query">x</div>
                 </div>
                 
                 {
                     this.state.onLoad === true && (                
-                        <ul>
+                        <ul id="list" role="group" aria-labelledby="lst-title">
                             {
                                 this.props.places.map(place=> (
 
-                                    <li onClick={()=>this.infoWin(place.venue.id)} key={place.venue.id}>{place.venue.name}</li>
+                                    <li role="menuitem" aria-labelledby="list"  onClick={()=>this.infoWin(place.venue.id)} key={place.venue.id}>{place.venue.name}</li>
                                                         
                                 ))
                             } 
@@ -84,7 +84,7 @@ class Menu extends Component {
                 {
                     this.state.filtredPlaces.length > 0 && (                
                         <div>
-                            <ul>
+                            <ul id="list" role="group" aria-labelledby="lst-title">
                                 {
                                     this.state.filtredPlaces.map(place=> (
                                         
