@@ -6,7 +6,7 @@ class Footer extends Component {
   render() {
     return (
       <footer id="footer">
-        <p></p>
+        <p id="par-footer"><strong>FEND Udacity© Nanodegree 2018</strong>, Made with <span>&hearts;</span> by Adel Lassag</p>
       </footer>
     )
   }
