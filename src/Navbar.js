@@ -18,7 +18,7 @@ class Navbar extends Component {
     return (
       <header id="nav-bar">
         <h1 id="app-title">Taxicab services in NEW YORK</h1>
-        <img onClick={() => this.toggleCollapse()} id="logo" src={logo}></img>
+        <img onClick={() => this.toggleCollapse()} id="logo" src={logo} alt="Taxicab logo"></img>
       </header>
     )
   }
